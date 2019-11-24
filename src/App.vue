@@ -1,6 +1,6 @@
 <template>
     <div id="app">
-        <visualisation-sidebar class="vis-sidebar" :title="title"  :style="{width:getSidebarWidth}"></visualisation-sidebar>
+        <visualisation-sidebar class="vis-sidebar" :title="title" :sidebarContent="getSidebarContent" :style="{width:getSidebarWidth}"></visualisation-sidebar>
         <visualisation-content class="vis-content" :title="title" :componentArray="getComponentNameArray" :style="{width:getContentWidth}"></visualisation-content>
         
     </div>
@@ -31,6 +31,11 @@ export default {
                     title:"Page 1",
                     contentPath:"./page1content.html",
                     componentName:"page1"
+                },
+                {
+                    title:"Page 2",
+                    contentPath:"./page2content.html",
+                    componentName:"page2"
                 }
             ]
         }
@@ -49,6 +54,9 @@ export default {
         },
         getComponentNameArray(){
             return this.vis_pages.map(x => x.componentName)
+        },
+        getSidebarContent(){
+            return this.vis_pages.map(x=>x.content);
         }
         
     }
